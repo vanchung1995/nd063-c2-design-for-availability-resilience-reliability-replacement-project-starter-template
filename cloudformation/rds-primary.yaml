@@ -39,3 +39,10 @@ Resources:
       MasterUsername: !Ref MasterUsername
       MasterUserPassword: !Ref MasterUserPassword
       # ManageMasterUserPassword: true
+
+Outputs:
+  PrimaryDBARN:
+    Description: PrimaryDB MySQL ARN
+    Value: !GetAtt MyDB.DBInstanceArn
+    Export:
+      Name: "PrimaryDBARN"
