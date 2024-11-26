@@ -27,12 +27,12 @@ Resources:
     Type: AWS::RDS::DBInstance
     Properties:
       Engine: MySQL
-      EngineVersion: 8.0.20
+      EngineVersion: 8.0.39
       MultiAZ: true
-      DBSecurityGroups:
+      VPCSecurityGroups:
       - !ImportValue "UDARR-Database"
       AllocatedStorage: '10'
-      DBInstanceClass: db.t2.small # Burstable
+      DBInstanceClass: db.t3.micro # Burstable
       DBSubnetGroupName: !Ref RDSDBSubnetGroup
       DBName: udacity
       MasterUsername: !Ref MasterUsername
