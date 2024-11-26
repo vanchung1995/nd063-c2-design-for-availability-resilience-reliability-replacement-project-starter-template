@@ -226,10 +226,10 @@ Outputs:
     Description: ID of the database security group
     Value: !Ref DatabaseSecurityGroup
     Export:
-      Name: "DatabaseSecurityGroup"
+      Name: "UDARR-Database"
 
   ApplicationSecurityGroup:
     Description: ID of the EC2 instance security group
     Value: !Ref ApplicationSecurityGroup
     Export:
-      Name: "ApplicationSecurityGroup"
+      Name: "UDARR-Application"
