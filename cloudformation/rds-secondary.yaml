@@ -36,6 +36,7 @@ Resources:
       DBSubnetGroupName: !Ref RDSDBSubnetGroup
       SourceDBInstanceIdentifier: arn:aws:rds:us-east-1:730554764003:db:primary-db
       SourceRegion: us-east-1
+      DBInstanceIdentifier: secondary-db
       # DBName: udacity
       # MasterUsername: !Ref MasterUsername
       # MasterUserPassword: !Ref MasterUserPassword
