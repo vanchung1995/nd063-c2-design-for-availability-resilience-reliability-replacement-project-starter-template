@@ -1,0 +1,40 @@
+Description:  Create RDS multi-az
+
+Parameters:
+  MasterUsername:
+    Type: String
+    Description: The username for our database.
+
+  MasterUserPassword:
+    Type: String
+    Description: The password for the database.
+    "NoEcho": true
+
+Resources:
+  # create db subnet group only contains private subnet
+  RDSDBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: DBSubnetGroup used by RDS
+      DBSubnetGroupName: RDSDBSubnetGroup
+      SubnetIds: 
+        !Split [",", !ImportValue PrivateSubnets]
+      Tags: 
+        - Key: "Name"
+          Value: "Primary-RDSDBSubnetGroup"
+  
+  MyDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      Engine: MySQL
+      EngineVersion: 8.0.20
+      MultiAZ: true
+      DBSecurityGroups:
+      - !ImportValue "UDARR-Database"
+      AllocatedStorage: '10'
+      DBInstanceClass: db.t2.small # Burstable
+      DBSubnetGroupName: !Ref RDSDBSubnetGroup
+      DBName: udacity
+      MasterUsername: !Ref MasterUsername
+      MasterUserPassword: !Ref MasterUserPassword
+      # ManageMasterUserPassword: true
