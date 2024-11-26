@@ -34,7 +34,7 @@ Resources:
       AllocatedStorage: '10'
       DBInstanceClass: db.t3.micro # Burstable
       DBSubnetGroupName: !Ref RDSDBSubnetGroup
-      SourceDBInstanceIdentifier: 
+      SourceDBInstanceIdentifier: arn:aws:rds:us-east-1:730554764003:db:primary-db
       SourceRegion: us-east-1
       # DBName: udacity
       # MasterUsername: !Ref MasterUsername
