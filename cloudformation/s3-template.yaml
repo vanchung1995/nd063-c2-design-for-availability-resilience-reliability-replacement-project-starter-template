@@ -14,5 +14,13 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
       AccessControl: Private
+      WebsiteConfiguration:
+        IndexDocument: ./s3/index.html
+        ErrorDocument: ./s3/index.html
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
       
 Outputs:
