@@ -1,0 +1,14 @@
+mysql> INSERT INTO students (name, age) VALUES ('Alicerep', 22);
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+mysql> INSERT INTO students (name, age) VALUES ('Alicerep', 22);
+ERROR 2013 (HY000): Lost connection to MySQL server during query
+No connection. Trying to reconnect...
+Connection id:    8
+Current database: udacity
+
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO students (name, age) VALUES ('Alicerep23', 22);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
