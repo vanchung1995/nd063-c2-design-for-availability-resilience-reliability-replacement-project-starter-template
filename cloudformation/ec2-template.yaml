@@ -16,3 +16,27 @@ Resources:
       SecurityGroupIds:
         - !ImportValue "UDARR-Application"
       SubnetId: !Select [ 0, !Split [",", !ImportValue PublicSubnets]]
+      InstanceType: t2.micro
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          # Update system packages
+          dnf update -y
+          
+          # Import MySQL GPG key
+          rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+          
+          # Add MySQL 8.0 repository for Amazon Linux 2023
+          rpm -Uvh https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
+          
+          # Update package metadata
+          dnf update -y
+          
+          # Install MySQL client
+          dnf install -y mysql-community-client
+          
+          # Verify installation
+          mysql --version > /var/log/mysql-version.log
+          
+          # Optional: Signal completion
+          echo "MySQL client installation completed successfully" > /var/log/mysql-client-install.log
