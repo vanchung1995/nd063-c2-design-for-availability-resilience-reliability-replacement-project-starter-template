@@ -1,0 +1,45 @@
+[ec2-user@ip-10-2-10-206 ~]$ mysql -h secondary-db.cey8wydj3pcw.us-west-2.rds.amazonaws.com -u myusername -p udacity
+Enter password: 
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 88
+Server version: 8.0.39 Source distribution
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use udacity
+Database changed
+mysql> SELECT * FROM students;
++----+---------+------+
+| id | name    | age  |
++----+---------+------+
+|  1 | Alice   |   21 |
+|  2 | Bob     |   23 |
+|  3 | Charlie |   22 |
++----+---------+------+
+3 rows in set (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO students (name, age) VALUES ('Alicerep', 22);
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+mysql> 
