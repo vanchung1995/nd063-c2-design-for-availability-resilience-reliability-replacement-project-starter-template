@@ -1,0 +1,18 @@
+Description:  Create EC2
+
+Resources:
+  UdacityKeyPair:
+    Type: AWS::EC2::KeyPair
+    Properties:
+      KeyFormat: pem
+      KeyName: udacity-keypair
+      KeyType: rsa
+
+  Ec2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-0453ec754f44f9a4a
+      KeyName: !Ref UdacityKeyPair
+      SecurityGroupIds:
+        - !ImportValue "UDARR-Application"
+      SubnetId: !Select [ 0, !Split [",", !ImportValue PublicSubnets]]
