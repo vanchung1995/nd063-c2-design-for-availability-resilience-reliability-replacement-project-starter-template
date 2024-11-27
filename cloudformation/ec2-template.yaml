@@ -11,7 +11,7 @@ Resources:
   Ec2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
-      ImageId: ami-0453ec754f44f9a4a
+      ImageId: ami-0453ec754f44f9a4a # ami-055e3d4f0bbeb5878 for us-west-2
       KeyName: !Ref UdacityKeyPair
       SecurityGroupIds:
         - !ImportValue "UDARR-Application"
