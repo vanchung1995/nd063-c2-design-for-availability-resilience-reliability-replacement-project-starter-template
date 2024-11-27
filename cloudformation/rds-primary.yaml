@@ -10,6 +10,11 @@ Parameters:
     Description: The password for the database.
     "NoEcho": true
 
+  Region:
+    Type: String
+    Description: Region
+    Default: us-east-1
+
 Resources:
   # create db subnet group only contains private subnet
   RDSDBSubnetGroup:
@@ -38,6 +43,8 @@ Resources:
       DBName: udacity
       MasterUsername: !Ref MasterUsername
       MasterUserPassword: !Ref MasterUserPassword
+      StorageEncrypted: true
+      KmsKeyId: !Join ['',['arn:aws:kms:', !Ref Region, ':', !Ref AWS::AccountId, ':alias/aws/rds']]
       # ManageMasterUserPassword: true
 
 Outputs:
