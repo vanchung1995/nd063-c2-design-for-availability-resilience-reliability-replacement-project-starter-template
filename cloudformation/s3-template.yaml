@@ -1,0 +1,18 @@
+Description:  Create S3 for hosting static web
+
+Parameters:
+  BucketName:
+    Description: A name that is prefixed to resource names
+    Type: String
+    Default: udacity-chungvv3-J8HaYWi7X8HjehiPIgNt-bucket
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      VersioningConfiguration:
+        Status: Enabled
+      AccessControl: Private
+      
+Outputs:
