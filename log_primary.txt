@@ -1,3 +1,22 @@
+[ec2-user@ip-10-1-10-73 ~]$ mysql -h primary-db.cuejfo8sho5g.us-east-1.rds.amazonaws.com -u <myusername_placeholder> -p udacity
+Enter password: 
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 86
+Server version: 8.0.39 Source distribution
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+
 mysql> show databases;
 +--------------------+
 | Database           |
