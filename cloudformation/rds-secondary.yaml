@@ -10,6 +10,21 @@ Parameters:
     Description: The password for the database.
     "NoEcho": true
 
+  PrimaryRegion:
+    Type: String
+    Description: Primary region.
+    Default: "us-east-1"
+
+  PrimaryDBInstanceID:
+    Type: String
+    Description: Primary DB Instance ID.
+    Default: primary-db
+  
+  Region:
+    Type: String
+    Description: Region
+    Default: us-west-2
+
 Resources:
   # create db subnet group only contains private subnet
   RDSDBSubnetGroup:
@@ -34,9 +49,11 @@ Resources:
       AllocatedStorage: '10'
       DBInstanceClass: db.t3.micro # Burstable
       DBSubnetGroupName: !Ref RDSDBSubnetGroup
-      SourceDBInstanceIdentifier: arn:aws:rds:us-east-1:730554764003:db:primary-db
+      SourceDBInstanceIdentifier: !Join ['',['arn:aws:rds:', !Ref PrimaryRegion, ':', !Ref AWS::AccountId, ':db:', !Ref PrimaryDBInstanceID]]
       SourceRegion: us-east-1
       DBInstanceIdentifier: secondary-db
+      StorageEncrypted: true
+      KmsKeyId: !Join ['',['arn:aws:kms:', !Ref Region, ':', !Ref AWS::AccountId, ':alias/aws/rds']]
       # DBName: udacity
       # MasterUsername: !Ref MasterUsername
       # MasterUserPassword: !Ref MasterUserPassword
