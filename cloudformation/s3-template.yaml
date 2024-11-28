@@ -24,3 +24,8 @@ Resources:
         RestrictPublicBuckets: false
       
 Outputs:
+  S3BucketRUL:
+    Description: URL of S3 bucket set as static resource
+    Value: !GetAtt S3Bucket.DomainName
+    Export:
+      Name: "S3BucketRUL"
