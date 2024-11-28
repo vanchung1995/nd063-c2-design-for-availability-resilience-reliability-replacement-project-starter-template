@@ -4,7 +4,7 @@ Parameters:
   BucketName:
     Description: A name that is prefixed to resource names
     Type: String
-    Default: udacity-chungvv3-J8HaYWi7X8HjehiPIgNt-bucket
+    Default: udacity-chungvv3-yy9820zqplcpq6p-bucket
 
 Resources:
   S3Bucket:
