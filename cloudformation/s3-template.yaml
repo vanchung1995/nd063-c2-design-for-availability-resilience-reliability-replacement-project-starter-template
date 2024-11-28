@@ -29,3 +29,9 @@ Outputs:
     Value: !GetAtt S3Bucket.WebsiteURL
     Export:
       Name: "S3BucketRUL"
+
+  BucketName:
+    Description: Bucket name for S3
+    Value: !Ref BucketName
+    Export:
+      Name: "BucketName"
