@@ -26,6 +26,6 @@ Resources:
 Outputs:
   S3BucketRUL:
     Description: URL of S3 bucket set as static resource
-    Value: !GetAtt S3Bucket.DomainName
+    Value: !GetAtt S3Bucket.WebsiteURL
     Export:
       Name: "S3BucketRUL"
